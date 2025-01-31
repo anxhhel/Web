@@ -1,0 +1,41 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+h1, h2, h3 {
+  font-weight: bold;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-link {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.bg-dark {
+  background-color: #121212 !important;
+}
+
+.text-light {
+  color: #f1f1f1 !important;
+}
+
+/* About Section */
+img {
+  object-fit: cover;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+footer small {
+  color: #837a7a;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Navigation</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Times New Roman', serif;
+      background-color: #000;
+      color: #f5f5dc; /* Beige color for text */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .menu-nav {
+      text-align: center;
+      line-height: 2.5rem;
+    }
+
+    .menu-nav a {
+      text-decoration: none;
+      color: #f5f5dc; /* Beige */
+      font-size: 2rem;
+      font-weight: bold;
+      display: inline-block;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .menu-nav a:hover {
+      color: #ffdd57; /* Highlighted yellow */
+      transform: scale(1.1); /* Slight zoom effect */
+    }
+
+    .menu-nav a:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <H1>KAMMAF</H1>
+  <div class="menu-nav">
+    <a href="menu.html">Menu</a><br>
+    <a href="Rezervim.html">Reservation</a><br>
+    <a href="about.html">About</a><br>
+    <a href="contact.html">Contact</a><br>
+    <a href="blogindex.html">Blog</a>
+  </div>
+</body>
+</html>

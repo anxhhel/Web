@@ -1,0 +1,30 @@
+@model List<SushiRestaurant.Models.MenuItem>
+
+<h2>Create an Order</h2>
+<form asp-action="CreateOrder" method="post">
+    <table>
+        <thead>
+            <tr>
+                <th>Dish</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.Price</td>
+                    <td>
+                        <input type="hidden" name="menuItemIds" value="@item.MenuItemID" />
+                        <input type="number" name="quantities" value="0" min="0" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <button type="submit">Submit Order</button>
+</form>

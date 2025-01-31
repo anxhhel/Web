@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Specials</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Corrected CSS Path -->
+    <link rel="stylesheet" href="/css/contactstyle.css">
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header class="navbar navbar-expand-lg navbar-dark bg-dark py-3 px-4">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">KAMMAF</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+                <li class="nav-item"><a class="nav-link" href="Rezervim.html">Book a Table</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="blogindex.html">Blog</a></li>
+
+                <li class="nav-item" id="admin-link" style="display: none;"><a class="nav-link" href="admin.html">Admin Dashboard</a></li>
+                <li class="nav-item" id="login-link"><a class="nav-link" href="login.html">Login</a></li>
+                <li class="nav-item" id="logout-link" style="display: none;"><a class="nav-link" href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Left Side - Restaurant Specials with Image -->
+            <div class="col-md-6">
+                <!-- Featured Image -->
+                <div class="text-center mb-3">
+                    <img src="https://www.licious.in/blog/wp-content/uploads/2022/04/shutterstock_1617156526-min.jpg" alt="Styled Image" class="custom-image">
+                    <class="custom-image">
+                     <width="50%">
+                    <height="50">
+                    </div>
+
+                <!-- Restaurant Specials -->
+                <div class="bg-dark p-4 rounded">
+                    <h2 class="text-center text-white">Today's Specials</h2>
+                    <ul id="specialsList" class="list-group">
+                        <!-- Specials will be inserted dynamically -->
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right Side - Opening Hours -->
+            <div class="col-md-6">
+                <div class="bg-dark p-4 rounded">
+                    <h2 class="text-center text-white">Opening Hours Updates</h2>
+                    <hr style="border: 1px solid #1831ac; width: 50%; margin: auto; margin-bottom: 15px;">
+                    <table class="table table-dark table-bordered text-center">
+                        <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>Open</th>
+                                <th>Close</th>
+                            </tr>
+                        </thead>
+                        <tbody id="opening-hours-table"></tbody>
+                    </table>
+                    <div class="text-center">
+                        <button id="save-hours" class="btn btn-warning">Save Changes</button>
+                    </div>
+                </div>
+
+                <!-- Google Maps Location -->
+                <div class="bg-dark p-4 rounded mt-4">
+                    <h2 class="text-center text-white">Our Location</h2>
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d448.4396796742237!2d19.806305570871552!3d41.33916762003649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1350e5b2f32d58ab%3A0xa130dd1556e6f1e3!2sEpoka%20University!5e0!3m2!1sen!2s!4v1693521993233!5m2!1sen!2s"
+                            width="100%" height="400" style="border:0; border-radius:10px;" allowfullscreen=""
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Countdown Timer -->
+    <div class="bg-danger text-white p-4 rounded text-center mt-4">
+        <h3>⏳ Limited-Time Offer! Ends in:NEVER</h3>
+        <h2 id="countdown"></h2>
+    </div>
+<!-- WhatsApp Chat Button -->
+<div class="text-center mt-3">
+    <a href="https://wa.me/YOUR_PHONE_NUMBER" class="btn btn-success btn-lg">
+        📞 Chat on WhatsApp
+    </a>
+</div>
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>By NE | Licensing | Style Guide</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript for Restaurant Specials & Opening Hours -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Load Restaurant Specials
+            const specials = [
+                { name: "Spicy Tuna Roll", price: "$12.99" },
+                { name: "Dragon Roll", price: "$14.99" },
+                { name: "Salmon Sashimi", price: "$10.99" },
+                { name: "Miso Soup", price: "$4.99" }
+            ];
+    
+            const specialsList = document.getElementById("specialsList");
+
+            specials.forEach(item => {
+                let listItem = document.createElement("li");
+                listItem.classList.add("list-group-item", "bg-dark", "text-white");
+                listItem.innerHTML = `<strong>${item.name}</strong> - ${item.price}`;
+                specialsList.appendChild(listItem);
+            });
+
+            const tableBody = document.getElementById("opening-hours-table");
+            const saveButton = document.getElementById("save-hours");
+
+            const defaultHours = [
+                { day: "Monday", open: "16:00", close: "22:30" },
+                { day: "Tuesday", open: "16:00", close: "22:30" },
+                { day: "Wednesday", open: "16:00", close: "22:30" },
+                { day: "Thursday", open: "16:00", close: "22:30" },
+                { day: "Friday", open: "16:00", close: "22:30" },
+                { day: "Saturday", open: "16:00", close: "22:30" },
+                { day: "Sunday", open: "16:00", close: "22:30" }
+            ];
+
+            function loadOpeningHours() {
+                const savedHours = JSON.parse(localStorage.getItem("openingHours")) || defaultHours;
+                tableBody.innerHTML = "";
+
+                savedHours.forEach((entry) => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td contenteditable="true">${entry.day}</td>
+                        <td contenteditable="true">${entry.open}</td>
+                        <td contenteditable="true">${entry.close}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            }
+
+            function saveOpeningHours() {
+                const rows = tableBody.querySelectorAll("tr");
+                let updatedHours = [];
+
+                rows.forEach(row => {
+                    let day = row.cells[0].innerText.trim();
+                    let open = row.cells[1].innerText.trim();
+                    let close = row.cells[2].innerText.trim();
+                    updatedHours.push({ day, open, close });
+                });
+
+                localStorage.setItem("openingHours", JSON.stringify(updatedHours));
+                alert("Opening hours saved successfully!");
+            }
+
+            saveButton.addEventListener("click", saveOpeningHours);
+            loadOpeningHours();
+        });
+    </script>
+</body>
+</html>

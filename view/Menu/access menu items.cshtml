@@ -1,0 +1,24 @@
+@model IEnumerable<SushiRestaurant.Models.MenuItem>
+
+<h2>Menu</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.Price</td>
+                <td>@item.Category</td>
+            </tr>
+        }
+    </tbody>
+</table>

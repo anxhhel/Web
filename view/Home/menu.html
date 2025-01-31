@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAMAF | Menu</title>
+    <link rel="icon" href="images/KAMAF.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="menustyles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <a class="navbar-brand" href="index.html">KAMAF</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+                <li class="nav-item"><a class="nav-link" href="Rezervim.html">Book a Table</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="blogindex.html">Blog</a></li>
+                <li class="nav-item" id="admin-link" style="display: none;"><a class="nav-link" href="admin.html">Admin Dashboard</a></li>
+                <li class="nav-item" id="login-link"><a class="nav-link" href="login.html">Login</a></li>
+                <li class="nav-item" id="logout-link" style="display: none;"><a class="nav-link" href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-5 left-part">
+                <div class="overlay-text">MENU</div>
+            </div>
+            <div class="col-md-7 right-part">
+                <div class="search-sort-container mb-3">
+                    <input type="text" id="search-bar" placeholder="Search for a menu item..." class="form-control">
+                    <select id="sort-options" class="form-control">
+                        <option value="default">Sort by</option>
+                        <option value="low-to-high">Price: Low to High</option>
+                        <option value="high-to-low">Price: High to Low</option>
+                    </select>
+                </div>
+                <div class="button-group mb-4 text-center">
+                    <button class="btn btn-category" onclick="scrollToCategory('maki')">MAKI</button>
+                    <button class="btn btn-category" onclick="scrollToCategory('uramaki')">URAMAKI</button>
+                    <button class="btn btn-category" onclick="scrollToCategory('special-rolls')">SPECIAL ROLLS</button> <!-- Fixed ID -->
+                </div>
+                
+                <div id="menu-container">
+                    <!-- Maki Category -->
+                    <div id="maki" class="menu-category">
+                        <h2>MAKI</h2>
+                        <div class="menu-item">
+                            <img src="path/to/image1.jpg" alt="Spicy Tuna Maki">
+                            <div class="menu-content">
+                                <div class="menu-top">
+                                    <h4>Spicy Tuna Maki</h4>
+                                    <span class="price">$5.00</span>
+                                </div>
+                                <div class="menu-bottom">
+                                    <p>Shrimp tempura, avocado, cucumber, topped with eel and avocado, drizzled with eel sauce.</p>
+                                    <button class="add-to-cart" onclick="addToCart('Spicy Tuna Maki', 5)">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Uramaki Category -->
+                    <div id="uramaki" class="menu-category">
+                        <h2>URAMAKI</h2>
+                        <div class="menu-item">
+                            <img src="path/to/image2.jpg" alt="Mango Maki">
+                            <div class="menu-content">
+                                <div class="menu-top">
+                                    <h4>Mango Maki</h4>
+                                    <span class="price">$6.00</span>
+                                </div>
+                                <div class="menu-bottom">
+                                    <p>Mango goodness with fresh tuna and a touch of avocado.</p>
+                                    <button class="add-to-cart" onclick="addToCart('Mango Maki', 6)">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Special Rolls Category -->
+                    <div id="special-rolls" class="menu-category"> <!-- Fixed ID -->
+                        <h2>SPECIAL ROLLS</h2>
+                        <div class="menu-item">
+                            <img src="path/to/image3.jpg" alt="Sunrise Bliss">
+                            <div class="menu-content">
+                                <div class="menu-top">
+                                    <h4>Sunrise Bliss</h4>
+                                    <span class="price">$10.00</span>
+                                </div>
+                                <div class="menu-bottom">
+                                    <p>Delightful salmon with avocado, wrapped in seaweed.</p>
+                                    <button class="add-to-cart" onclick="addToCart('Sunrise Bliss', 10)">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+                
+                <!-- Cart Section -->
+            <div id="cart-container" class="mt-5 p-3 bg-dark text-light">
+                <h3>Order Summary</h3>
+                <ul id="cart-items" class="list-group list-group-flush"></ul>
+                <p id="total-price" class="mt-3">Total: $0.00</p>
+                <button class="btn btn-danger mt-3" onclick="clearCart()">Clear Cart</button>
+                <button class="btn btn-success mt-3" onclick="openCheckoutModal()">Go to Checkout</button>
+            </div>
+
+            <!-- Checkout Modal -->
+            <div class="modal" id="checkout-modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content bg-dark text-light">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Checkout</h5>
+                            <button type="button" class="close btn-close text-light" onclick="closeCheckoutModal()" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="checkout-form">
+                                <div class="mb-3">
+                                    <label for="customer-name" class="form-label">Name and Surname</label>
+                                    <input type="text" class="form-control" id="customer-name" placeholder="Enter your name and surname" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone-number" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phone-number" placeholder="Enter your phone number" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Address</label>
+                                    <textarea class="form-control" id="address" rows="3" placeholder="Enter your address" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Order</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>                      
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+@model IEnumerable<SushiRestaurant.Models.Order>
+
+<h2>All Orders</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.OrderId</td>
+                <td>@order.Customer.UserName</td>
+                <td>@order.OrderDate</td>
+                <td>@order.OrderStatus</td>
+                <td>
+                    <form method="post" asp-action="UpdateOrderStatus">
+                        <input type="hidden" name="orderId" value="@order.OrderId" />
+                        <select name="status">
+                            <option value="Pending" @(order.OrderStatus == "Pending" ? "selected" : "")>Pending</option>
+                            <option value="Completed" @(order.OrderStatus == "Completed" ? "selected" : "")>Completed</option>
+                            <option value="Canceled" @(order.OrderStatus == "Canceled" ? "selected" : "")>Canceled</option>
+                        </select>
+                        <button type="submit">Update</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

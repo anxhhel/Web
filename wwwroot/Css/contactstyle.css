@@ -1,0 +1,149 @@
+/* General Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #1e1e1e;
+}
+
+@media (max-width: 768px) {
+  .custom-image {
+      max-width: 100%; /* Full width on smaller screens */
+  }
+}
+
+/* Opening Hours Section */
+.opening-hours-container {
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 20px auto;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Opening Hours Table */
+.opening-hours-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.opening-hours-container th,
+.opening-hours-container td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #444;
+  background: #292929;
+  color: #f1f1f1;
+}
+
+.opening-hours-container th {
+  background: #ffb400;
+  color: black;
+  font-weight: bold;
+}
+
+/* Table Inputs */
+.opening-hours-container input {
+  background: #1e1e1e;
+  color: #fff;
+  border: 1px solid #444;
+  padding: 5px;
+  text-align: center;
+  width: 100%;
+  font-size: 1rem;
+}
+
+/* Save Button */
+#save-hours {
+  background-color: #ffb400;
+  color: black;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 15px;
+  transition: 0.3s ease;
+}
+
+#save-hours:hover {
+  background-color: #ff9900;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .opening-hours-container {
+      max-width: 100%;
+      padding: 15px;
+  }
+}
+/* General Styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Specials Section */
+.bg-dark {
+  background-color: #212529 !important;
+  border-radius: 10px;
+}
+
+.text-white {
+  color: white !important;
+}
+
+/* Restaurant Specials Image */
+.special-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
+}
+
+/* Special of the Day */
+.bg-warning {
+  background-color: #ffc107 !important;
+  color: #000 !important;
+  border-radius: 10px;
+}
+
+/* Loyalty Points */
+.bg-primary {
+  background-color: #007bff !important;
+  border-radius: 10px;
+}
+
+/* Like Button */
+.like-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+#themeToggle:hover {
+  background-color: #333;
+}
+
+
+/* Centered Text for Sections */
+.text-center {
+  text-align: center;
+}
+
+/* Improve Spacing */
+.mt-3 {
+  margin-top: 15px;
+}
+
+.mt-4 {
+  margin-top: 20px;
+}
+
+.p-4 {
+  padding: 20px;
+}
+

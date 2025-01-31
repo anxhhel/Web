@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- The character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Scale for mobile-->
+    <title>Book a Table</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
+
+    <!-- Our custom CSS -->
+    <style>
+        /* Custom CSS for additional styling */
+        body {
+            background-color: #343a40; 
+            color: #ffffff; 
+        }
+        .navbar {
+            background-color: #1a1a1a; 
+            border-bottom: 2px solid #444; 
+        }
+
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+            transition: color 0.3s ease-in-out; /* Smooth color transition */
+        }
+
+        .nav-link:hover, .nav-link:focus, .nav-item.active .nav-link {
+            color: #ff6f61 !important; 
+            text-decoration: none; 
+        }
+
+        .nav-item.active .nav-link {
+            text-decoration: underline; 
+        }
+        .container {
+            margin-top: 50px; /* For adding space at the top*/
+        }
+
+        .form-container {
+            background-color: #495057; 
+            padding: 20px; /* Padding inside the form container */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* To add a "3D effect" via shadows */
+        }
+
+        h2 {
+            text-align: center; 
+            margin-bottom: 20px; 
+        }
+
+        .btn-primary {
+            width: 100%; 
+            background-color: #343a40; 
+            border-color: #343a40; 
+        }
+
+        .photo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .photo-container img {
+            max-width: 100%;
+            border-radius: 8px; /* Rounded corners for the image */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* To add a "3D effect" via shadows */
+        }
+        /* Background Image */
+        body {
+            background-image: url('/Images/images/back.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Image inside a div */
+        .image-container {
+            background-image: url('/Images/images/foto1.jpeg');
+            width: 300px;
+            height: 300px;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <a class="navbar-brand" href="index.html">KAMMAF</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="menu.html">Menu</a>
+                </li>
+    <li class="nav-item">
+                    <a class="nav-link" href="Rezervim.html">Book a Table</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+    <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="blogindex.html">Blog</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 form-container"> <!-- Left half for form -->
+                <h2><b> Book a Table </b></h2>
+                <form id="reservationForm">
+                    <div class="form-group">
+                        <label for="name"><b>Full Name:</b></label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone"><b>Phone Number:</b></label>
+                        <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{10}" title="Enter a 10-digit phone number." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><b>Email:</b></label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date"><b>Date:</b></label>
+                        <input type="date" class="form-control" id="date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time"><b>Time:</b></label>
+                        <input type="time" class="form-control" id="time" name="time" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Reserve</button>
+                </form>
+                <div id="form-feedback" class="mt-3"></div> <!-- placeholder for feedback -->
+            </div>
+            <div class="col-md-6 photo-container"> <!-- the right half is for the photo -->
+                <img src="https://i.pinimg.com/736x/9c/10/23/9c1023c4cdd077098402797343dbf1c9.jpg" alt="Reservation" class="img-fluid">
+
+
+            </div>
+        </div>
+    </div>
+
+    <script src="Rezervim.js"></script> <!-- we link the external .js file -->
+</body>
+</html>
