@@ -1,0 +1,68 @@
+-- Users Table
+CREATE TABLE Users (
+    UserID INT IDENTITY PRIMARY KEY,
+    Name NVARCHAR(100),
+    Email NVARCHAR(100) UNIQUE NOT NULL,
+    PasswordHash NVARCHAR(255),
+    Role NVARCHAR(50) CHECK (Role IN ('Customer', 'Admin'))
+);
+
+-- Menu Items Table
+CREATE TABLE MenuItems (
+    DishID INT IDENTITY PRIMARY KEY,
+    Name NVARCHAR(100),
+    Category NVARCHAR(50),
+    Description NVARCHAR(500),
+    Price DECIMAL(10, 2),
+    Rating DECIMAL(3, 2)
+);
+
+-- Orders Table
+CREATE TABLE Orders (
+    OrderID INT IDENTITY PRIMARY KEY,
+    UserID INT FOREIGN KEY REFERENCES Users(UserID),
+    OrderDetails NVARCHAR(MAX),
+    TotalPrice DECIMAL(10, 2),
+    Status NVARCHAR(50) CHECK (Status IN ('Pending', 'Completed', 'Cancelled')),
+    OrderDate DATETIME DEFAULT GETDATE()
+);
+
+-- Reservations Table
+CREATE TABLE Reservations (
+    ReservationID INT IDENTITY PRIMARY KEY,
+    UserID INT FOREIGN KEY REFERENCES Users(UserID),
+    ReservationDate DATETIME NOT NULL,
+    NumPeople INT CHECK (NumPeople > 0),
+    SpecialRequests NVARCHAR(500),
+    Status NVARCHAR(50) CHECK (Status IN ('Pending', 'Approved', 'Cancelled'))
+);
+
+-- Reviews Table
+CREATE TABLE Reviews (
+    ReviewID INT IDENTITY PRIMARY KEY,
+    UserID INT FOREIGN KEY REFERENCES Users(UserID),
+    DishID INT FOREIGN KEY REFERENCES MenuItems(DishID),
+    Rating INT CHECK (Rating BETWEEN 1 AND 5),
+    Comment NVARCHAR(1000),
+    CreatedAt DATETIME DEFAULT GETDATE()
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=SushiRestaurantDb;Trusted_Connection=True;MultipleActiveResultSets=true"
+  }
+}
